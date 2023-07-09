@@ -8,7 +8,7 @@ public class HellowWorldApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HellowWorldApplication.class, args);
-		System.out.println("!!!! Master !!!");
+		
 	}
 
 }
