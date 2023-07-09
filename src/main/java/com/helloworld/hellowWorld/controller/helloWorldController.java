@@ -8,7 +8,7 @@ public class helloWorldController {
 	
 	@GetMapping("/hello-world")
 	public String helloWorld() {
-		return "Hello World from Spring + AWS +Docker";
+		return "Hello World from Spring + GCP + Docker + Kubernetes + git + gitAction";
 	}
 
 }
