@@ -2,7 +2,9 @@ name: artifact workflow
 on: workflow_dispatch
 jobs: 
   context-artifact:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    outputs:
+      script-file: ${{steps.publish01.outputs.script-file}}
     steps:
       - name: Get Code
         uses: actions/checkout@master
@@ -17,6 +19,9 @@ jobs:
         run: mvn clean compile
       - name: package project
         run: mvn clean package
+      - name: publish jar filename
+        id: publish01
+        run: find target/*.jar -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
       - name: upload artificat
         uses: actions/upload-artifact@master
         with:
@@ -25,7 +30,7 @@ jobs:
             target
   deploy:
     needs: context-artifact
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: get build artifact
         uses: actions/download-artifact@master
