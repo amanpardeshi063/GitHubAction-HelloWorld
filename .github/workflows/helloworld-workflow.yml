@@ -14,6 +14,6 @@ jobs:
       - name: Build with maven
         run: mvn -B package --file pom.xml
       - name: Running HWA 
-        run: java HellowWorldApplication.java
+        run: java src\main\java\com\helloworld\hellowWorld\HellowWorldApplication.java
 
 
