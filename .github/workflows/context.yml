@@ -1,11 +1,22 @@
-name: context workflow
+name: context artifact workflow
 on: workflow_dispatch
 jobs: 
-  context-job:
+  context-artifact:
     runs-on: windows-latest
     steps:
-      - name: ${{ github.ref_name }}
-        run: echo ${{ toJSON(github) }}
+      - name: Get Code
+        uses: actions/checkout@master
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build with maven
+        run: mvn -B package --file pom.xml
+      - name: compile project
+        run: mvn clean compile
+      - name: package project
+        run: mvn clean package
       
 
 
