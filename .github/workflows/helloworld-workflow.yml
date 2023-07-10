@@ -1,10 +1,19 @@
-name: first workflow
-on: [workflow_dispatch]
+name: test workflow
+on: push
 jobs: 
-  first-job:
+  test-job:
     runs-on: windows-latest
     steps:
-      - name: print greeting
-        run: echo "hello world"
-      - name: done
-        run: echo "done bye!!"
+      - name: Get Code
+        uses: action/checkout@v3
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build with maven
+        run: mvn -B package --file pom.xml
+      - name: Running HWA 
+        run: java HellowWorldApplication.java
+
+
