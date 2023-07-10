@@ -18,7 +18,7 @@ jobs:
       - name: package project
         run: mvn clean package
       - name: upload artificat
-        uses: action/upload-artifact@master
+        uses: actions/upload-artifact@master
         with:
           name: dist-files
           path: |
