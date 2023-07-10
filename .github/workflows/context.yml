@@ -36,6 +36,8 @@ jobs:
           name: dist-files
       - name: output context
         run: dir
+      - name: output filename
+        run: echo ${{ needs.context-artifact.outputs.script-file }}
       - name: deploy
         run: echo "deploying"
     
