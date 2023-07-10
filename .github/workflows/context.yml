@@ -4,8 +4,8 @@ jobs:
   context-job:
     runs-on: windows-latest
     steps:
-      - name: context details
-        run: echo "${{github}}"
+      - name: ${{ github.ref_name }}
+        run: echo "${{ github }}"
       
 
 
