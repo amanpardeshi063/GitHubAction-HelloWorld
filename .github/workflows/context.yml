@@ -1,0 +1,11 @@
+name: context workflow
+on: workflow_dispatch
+jobs: 
+  context-job:
+    runs-on: windows-latest
+    steps:
+      - name: context details
+        uses: echo "${{github}}"
+      
+
+
