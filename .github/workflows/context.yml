@@ -27,6 +27,12 @@ jobs:
     needs: context-artifact
     runs-on: windows-latest
     steps:
+      - name: get build artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist-files
+      - name: output context
+        run: dir
       - name: deploy
         run: echo "deploying"
     
